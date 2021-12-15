@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next';
 
 import { getPrismicClient } from '../services/prismic';
-
-import commonStyles from '../styles/common.module.scss';
-import styles from './home.module.scss';
 import Header from '../components/Header';
+
+import { FiCalendar, FiUser } from 'react-icons/fi';
+
+import styles from './home.module.scss';
 
 interface Post {
   uid?: string;
@@ -28,7 +29,61 @@ interface HomeProps {
 export default function Home() {
   
   return (
-    <Header />
+    <>
+      <Header />
+      <main className={styles.container}>
+        <div className={styles.postContent}>
+          <a>
+            <strong>Como utilizar Hooks</strong>
+            <p>Pensando em sincronização em vez de ciclos de vida</p>
+            <div> 
+              <span>
+                <FiCalendar />
+                <time>15 Mar 2021</time>
+              </span>
+              <span>
+                <FiUser />
+                Joseph Oliveira
+              </span>
+            </div>
+          </a>
+
+          <a>
+            <strong>Como utilizar Hooks</strong>
+            <p>Pensando em sincronização em vez de ciclos de vida</p>
+            <div> 
+              <span>
+                <FiCalendar />
+                <time>15 Mar 2021</time>
+              </span>
+              <span>
+                <FiUser />
+                Joseph Oliveira
+              </span>
+            </div>
+          </a>
+
+          <a>
+            <strong>Como utilizar Hooks</strong>
+            <p>Pensando em sincronização em vez de ciclos de vida</p>
+            <div> 
+              <span>
+                <FiCalendar />
+                <time>15 Mar 2021</time>
+              </span>
+              <span>
+                <FiUser />
+                Joseph Oliveira
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <button type="button">
+          Carregar mais posts
+        </button>
+      </main>
+    </>
   );
 }
 

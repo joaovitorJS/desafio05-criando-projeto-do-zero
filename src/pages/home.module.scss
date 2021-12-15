@@ -1,1 +1,72 @@
-// TODO
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+
+  button {
+    border: none;
+    background: transparent;
+    color: var(--highlight);
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4rem;
+
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}
+
+.postContent {
+  max-width: 720px;
+  margin: 2rem 0;
+ 
+  a {
+    display: block;
+    cursor: pointer;
+
+    & + a {
+      margin-top: 3rem;
+    }
+
+    &:hover strong {
+      color: var(--highlight);
+    }
+
+    strong {
+      font-size: 1.75rem;
+      line-height: 2.125rem;
+      font-weight: 700;
+      color: var(--heading);
+      transition: color 0.2s;
+    }
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.375rem;
+      color: var(--body);
+      margin-top: 0.5rem;
+    }
+
+    div {
+      margin-top: 1.5rem;
+
+      span {
+        font-size: 0.875rem;
+        color: var(--info);
+      
+        svg {
+          width: 20px;
+          height: 20px;
+          margin-right: 0.5rem;
+        }
+
+        & + span {
+          margin-left: 1.5rem;
+        }
+      }
+    }
+  }
+}
