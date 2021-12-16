@@ -1,0 +1,18 @@
+.buttonContainer {
+  width: 100%;
+  background: var(--heading);
+  border: none;
+  border-radius: 0.25rem;
+
+  padding: 1.125rem 1rem;
+  
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--background);
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}

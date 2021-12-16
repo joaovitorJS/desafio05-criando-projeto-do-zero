@@ -42,3 +42,15 @@ a {
   color: inherit; // assume a cor do elemento pai
   text-decoration: none;
 }
+
+
+//Utterances Styles Modify
+#comments {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+
+  .utterances {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}

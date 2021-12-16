@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { getPrismicClient } from '../../services/prismic';
 import Prismic from '@prismicio/client';
@@ -13,8 +14,9 @@ import { FiCalendar, FiUser, FiClock } from 'react-icons/fi';
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 import { RichText } from 'prismic-dom';
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { ButtonExitPreview } from '../../components/ButtonExitPreview';
+import { UtterancesComments } from '../../components/UtterancesComments';
 
 interface Post {
   first_publication_date: string | null;
@@ -38,17 +40,7 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
-  // const [isLoading, setIsLoading] = useState(true);
-  
   const router = useRouter();
-
-  // useEffect(() => {
-  //   if(!post) {
-  //     setIsLoading(true);
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-  // },[]);
 
   function timeReadingCalculation(content: {heading: string, body: {text: string}[]}[]) {
     const numberWords = content.reduce((acc, element, index) => {
@@ -102,6 +94,26 @@ export default function Post({ post }: PostProps) {
             </section>
           ))}
         </article>
+
+        <div className={styles.footer}>
+          <div>
+            <span>
+              <p>Como utilizar Hooks</p>
+              <Link href="/">
+                <a>Post anterior</a>
+              </Link>
+            </span>
+            <span>
+              <p>Criando um app CRA do Zero</p>
+              <Link href="/">
+                <a>Próximo post</a>
+              </Link> 
+            </span>
+          </div>
+
+          <UtterancesComments />
+          <ButtonExitPreview />
+        </div>
       </main>
     </>
   );

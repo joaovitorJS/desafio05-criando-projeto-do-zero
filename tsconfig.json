@@ -23,7 +23,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.spec.tsx"
-  ],
+, "src/components/UtterancesComments/index.js"  ],
   "exclude": [
     "node_modules"
   ]

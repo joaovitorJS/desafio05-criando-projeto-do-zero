@@ -13,6 +13,7 @@ import { FiCalendar, FiUser } from 'react-icons/fi';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
+import { ButtonExitPreview } from '../components/ButtonExitPreview';
 
 interface Post {
   uid?: string;
@@ -87,10 +88,12 @@ export default function Home({ postsPagination }: HomeProps) {
           ))}
           
           {nextPage && (
-            <button type="button" onClick={handleLoadMorePosts}>
+            <button type="button" className={styles.buttonMorePost} onClick={handleLoadMorePosts}>
               Carregar mais posts
             </button>
           )}
+
+          <ButtonExitPreview />
         </div>
         
       </main>
