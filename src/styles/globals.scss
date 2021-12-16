@@ -37,3 +37,8 @@ body, input, textarea, select, button {
 button {
   cursor: pointer;
 }
+
+a {
+  color: inherit; // assume a cor do elemento pai
+  text-decoration: none;
+}

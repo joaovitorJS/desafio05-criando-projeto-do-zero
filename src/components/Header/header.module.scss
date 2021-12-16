@@ -1,13 +1,13 @@
 .container {
-  margin-top: 2rem;
   height: 6.5rem;
+  max-width: 1120px;
+  margin: 2rem auto 0;
 }
 
 .content {
-  max-width: 1120px;
+  max-width: 720px;
   height: 6.5rem;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
 }
