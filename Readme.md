@@ -63,8 +63,8 @@ O **Spacetraveling** é uma aplicação que tem como objetivos trazer post usand
 </p>
  <br>
 <p align="center">
-  <img src="./.github/home.png" alt="Layout Inicial" width="415px" height="260px"/>
-  <img src="./.github/post.png" alt="Laout da página de Post" width="415px" height="260px"/>
+  <img src="./.github/home.png" alt="Layout Inicial" width="49%" height="260px"/>
+  <img src="./.github/post.png" alt="Laout da página de Post" width="49%" height="260px"/>
 </p>
 
 
