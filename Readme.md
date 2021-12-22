@@ -16,8 +16,18 @@
   <a>
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/joaovitorJS/desafio05-criando-projeto-do-zero">
   </a>
-  <a href="https://lbesson.mit-license.org/" target="_blank">
+  <a href="https://lbesson.mit-license.org/"        target="_blank>
     <img alt="MIT license" src="https://img.shields.io/badge/License-MIT-blue.svg">
+  </a>
+</p>
+<p align="center">
+
+  <a target="_blank" href="https://reactjs.org/">
+    <img alt="ReactJS" src="https://img.shields.io/static/v1?color=blue&label=React&message=JS&?style=plastic&logo=React">
+  </a>
+
+  <a target="_blank" href="https://nextjs.org/">
+      <img alt="NextJS" src="https://img.shields.io/static/v1?color=white&label=Next&message=JS&?style=plastic&logo=Next.js">
   </a>
 </p>
 
@@ -53,9 +63,11 @@ O **Spacetraveling** é uma aplicação que tem como objetivos trazer post usand
 </p>
  <br>
 <p align="center">
-  <img src="./.github/home.png" alt="Layout Inicial" width="500px" height="300px"/>
-  <img src="./.github/post.png" alt="Laout da página de Post" width="500px" height="300px"/>
+  <img src="./.github/home.png" alt="Layout Inicial" width="415px" height="260px"/>
+  <img src="./.github/post.png" alt="Laout da página de Post" width="415px" height="260px"/>
 </p>
+
+
 
 ---
 
@@ -190,11 +202,22 @@ $ npm run dev
 * **[NextJS](https://nextjs.org/)**
 * **[Sass](https://sass-lang.com/install)**
 * **[Prismic](https://prismic.io/docs)**
+* **[Utterances](https://utteranc.es/)**
+
 
 
 > Veja o arquivo  [package.json](https://github.com/joaovitorJS/nlw-05-podcastr/blob/master/package.json) para ver todas as dependências do projeto
 
 ---
+
+## 🤔 Como contribuir para este projeto?
+
+- Faça um **fork** do projeto;
+- Crie uma nova branch com as suas alterações: `git checkout -b my-feature`, ou se preferir, `git branch my-feature && git git checkout my-feature`
+- Salve as alterações e crie uma mensagem de commit contando o que você fez:`git commit -m "feature: My new feature"`
+- Envie as suas alterações: `git push origin my-feature`
+
+> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://github.com/firstcontributions/first-contributions)
 
 ---
 ## 👨🏻‍💻 Autor
