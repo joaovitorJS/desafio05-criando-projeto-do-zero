@@ -11,6 +11,18 @@
   max-width: 720px;
   margin: 5rem auto 4rem;
 
+  header {
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--info);
+      display: block;
+      margin-top: 1rem;
+    }
+  }
+
   h1 {
     font-size: 3rem;
     font-weight: 700;
@@ -90,6 +102,10 @@
 
       &:last-child {
         text-align: right;
+      }
+
+      &:first-child {
+        text-align: left;
       }
     }
   }

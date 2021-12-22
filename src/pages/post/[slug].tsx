@@ -20,6 +20,7 @@ import { UtterancesComments } from '../../components/UtterancesComments';
 
 interface Post {
   first_publication_date: string | null;
+  last_publication_date: string | null;
   data: {
     title: string;
     banner: {
@@ -37,9 +38,20 @@ interface Post {
 
 interface PostProps {
   post: Post;
+  preview: boolean;
+  navigationPosts: {
+    previousPost: {
+      uid: string | null;
+      title: string | null;
+    },
+    nextPost: {
+      uid: string | null;
+      title: string | null;
+    }
+  }
 }
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post, preview, navigationPosts }: PostProps) {
   const router = useRouter();
 
   function timeReadingCalculation(content: {heading: string, body: {text: string}[]}[]) {
@@ -55,9 +67,9 @@ export default function Post({ post }: PostProps) {
   }
  
   if (router.isFallback)  
-    return ( <h1>Carregando...</h1>) 
-  else 
-    return (
+    return ( <h1>Carregando...</h1>); 
+  
+  return (
     <>
       <Head>
         <title> {post.data.title} | Spacetraveling </title>
@@ -83,6 +95,9 @@ export default function Post({ post }: PostProps) {
                 {timeReadingCalculation(post.data.content)} min
               </span>
             </div>
+            <span>
+              { `* editado em ${format( new Date(post.last_publication_date), 'd MMM y', { locale: ptBR })}, às ${format( new Date(post.last_publication_date), 'HH:mm', { locale: ptBR })}`}
+            </span>
           </header>
 
           {post.data.content.map((contentSection, index) => (
@@ -97,22 +112,39 @@ export default function Post({ post }: PostProps) {
 
         <div className={styles.footer}>
           <div>
-            <span>
-              <p>Como utilizar Hooks</p>
-              <Link href="/">
-                <a>Post anterior</a>
-              </Link>
-            </span>
-            <span>
-              <p>Criando um app CRA do Zero</p>
-              <Link href="/">
-                <a>Próximo post</a>
-              </Link> 
-            </span>
+            
+            { navigationPosts?.previousPost.uid ?
+              (
+                <span>
+                  <p>{navigationPosts.previousPost.title}</p>
+                  <Link href={`/post/${navigationPosts.previousPost.uid}`}>
+                    <a>Post anterior</a>
+                  </Link>
+                </span>
+              ) : (
+                <span></span>
+              )
+            }
+            
+            { navigationPosts?.nextPost.uid ?
+              (
+                <span>
+                  <p>{navigationPosts.nextPost.title}</p>
+                  <Link href={`/post/${navigationPosts.nextPost.uid}`}>
+                    <a>Próximo post</a>
+                  </Link> 
+                </span>
+              ) : (
+                <span></span>
+              )
+            }
           </div>
 
           <UtterancesComments />
-          <ButtonExitPreview />
+          {
+            preview &&
+              <ButtonExitPreview  />
+          }
         </div>
       </main>
     </>
@@ -144,16 +176,49 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }) => {
  
 
   const { slug } = params;
   const prismic = getPrismicClient();
-  const response = await prismic.getByUID('posts', String(slug), {});
+  const response = await prismic.getByUID('posts', String(slug), {
+    ref: previewData?.ref ?? null,
+  });
+
+  const previousPost = (await prismic.query(
+    Prismic.Predicates.at('document.type', 'posts'),
+    {
+      pageSize: 1,
+      after: `${response.id}`,
+      orderings: '[document.last_publication_date desc]'
+    }
+  )).results[0];
+
+  const nextPost = (await prismic.query(
+    Prismic.Predicates.at('document.type', 'posts'),
+    {
+      pageSize: 1,
+      after: `${response.id}`,
+      orderings: '[document.last_publication_date]'
+    }
+  )).results[0];
+
+  const navigationPosts = {
+    previousPost: {
+      uid: previousPost?.uid ?? null,
+      title: previousPost?.data.title ?? null,
+    },
+    nextPost: {
+      uid: nextPost?.uid ?? null,
+      title: nextPost?.data.title ?? null,
+    }
+  }
 
   return {
     props: {
       post: response,
+      preview,
+      navigationPosts,
     },
     redirect: 60 * 60, // 1 h
   }
